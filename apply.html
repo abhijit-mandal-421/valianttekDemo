@@ -242,25 +242,137 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fade-in on scroll functionality
-            const fadeInElements = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            fadeInElements.forEach(el => {
-                observer.observe(el);
-            });
+  <script>
+        // Get job ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const jobId = urlParams.get('job');
+        
+        // Load job information
+        function loadJobInfo() {
+            const jobs = JSON.parse(localStorage.getItem('jobPostings') || '[]');
+            const job = jobs.find(j => j.id === jobId);
+            
+            const jobInfoContainer = document.getElementById('jobInfo');
+            
+            if (!job) {
+                jobInfoContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Job Not Found</h2>
+                        <p class="text-gray-600 mb-4">The job you're looking for doesn't exist or may have been removed.</p>
+                        <a href="careers.html" class="bg-primary text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-colors">
+                            Back to Jobs
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+            
+            jobInfoContainer.innerHTML = `
+                <div class="border-l-4 border-primary pl-6">
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">Apply for: ${job.title}</h1>
+                    <div class="flex items-center text-gray-600 mb-4">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        ${job.location} • Job ID: ${job.id}
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Job Description</h3>
+                            <p class="text-gray-700 text-sm">${job.description}</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Requirements</h3>
+                            <p class="text-gray-700 text-sm">${job.requirements}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Handle form submission
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const formMessage = document.getElementById('formMessage');
+            
+            // Basic validation
+            if (!formData.get('firstName') || !formData.get('lastName') || !formData.get('email') || !formData.get('resume') || !formData.get('consent')) {
+                showMessage('Please fill in all required fields.', 'error');
+                return;
+            }
+            
+            // Email validation
+            const email = formData.get('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // File size validation (5MB limit)
+            const resume = formData.get('resume');
+            if (resume.size > 5 * 1024 * 1024) {
+                showMessage('Resume file size must be less than 5MB.', 'error');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Submitting...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                // Store application (in a real app, this would be sent to a server)
+                const application = {
+                    jobId: jobId,
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    experience: formData.get('experience'),
+                    salary: formData.get('salary'),
+                    availability: formData.get('availability'),
+                    coverLetter: formData.get('coverLetter'),
+                    submittedAt: new Date().toISOString()
+                };
+                
+                // Save to localStorage (in production, send to server)
+                const applications = JSON.parse(localStorage.getItem('jobApplications') || '[]');
+                applications.push(application);
+                localStorage.setItem('jobApplications', JSON.stringify(applications));
+                
+                showMessage('Application submitted successfully! We\'ll be in touch soon.', 'success');
+                this.reset();
+                
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }, 2000);
         });
+        
+        function showMessage(message, type) {
+            const formMessage = document.getElementById('formMessage');
+            const bgColor = type === 'success' ? 'bg-success' : 'bg-error';
+            const textColor = type === 'success' ? 'text-success' : 'text-error';
+            const borderColor = type === 'success' ? 'border-success' : 'border-error';
+            
+            formMessage.className = `${bgColor} bg-opacity-10 border ${borderColor} ${textColor} px-4 py-3 rounded-md`;
+            formMessage.textContent = message;
+            formMessage.classList.remove('hidden');
+            
+            // Auto-hide success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+            }
+        }
+        
+        // Load job info on page load
+        loadJobInfo();
     </script>
-
 </body>
 </html>

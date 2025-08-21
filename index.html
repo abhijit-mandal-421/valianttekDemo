@@ -590,6 +590,35 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabsContainer = document.getElementById('talent-tabs');
+            const contentContainers = document.querySelectorAll('.talent-content');
+            
+            if (tabsContainer) {
+                tabsContainer.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('talent-tab')) {
+                        const tabId = e.target.dataset.tab;
+
+                        // Update tab styles
+                        tabsContainer.querySelectorAll('.talent-tab').forEach(tab => {
+                            tab.classList.remove('tab-active');
+                            tab.classList.add('text-blue-200');
+                        });
+                        e.target.classList.add('tab-active');
+                        e.target.classList.remove('text-blue-200');
+
+                        // Update content visibility
+                        contentContainers.forEach(content => {
+                            if (content.id === tabId) {
+                                content.classList.remove('hidden');
+                            } else {
+                                content.classList.add('hidden');
+                            }
+                        });
+                    }
+                });
+            }
+
             // Fade-in on scroll functionality
             const fadeInElements = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => {

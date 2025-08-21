@@ -321,6 +321,30 @@
             fadeInElements.forEach(el => {
                 observer.observe(el);
             });
+
+            // Handle Contact Form Submission
+            const contactForm = document.getElementById('contactForm');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(contactForm);
+                const firstName = formData.get('first-name');
+                const lastName = formData.get('last-name');
+                const email = formData.get('email');
+                const subject = formData.get('subject');
+                const message = formData.get('message');
+
+                let body = `New Contact Form Submission:\n\n`;
+                body += `Name: ${firstName} ${lastName}\n`;
+                body += `Email: ${email}\n`;
+                body += `Subject: ${subject}\n\n`;
+                body += `Message:\n${message}`;
+
+                const mailtoSubject = `Contact Form: ${subject}`;
+                
+                window.location.href = `mailto:jalasutrapul@gmail.com?subject=${encodeURIComponent(mailtoSubject)}&body=${encodeURIComponent(body)}`;
+            });
         });
     </script>
 
