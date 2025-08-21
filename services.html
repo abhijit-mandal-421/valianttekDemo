@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Valiant Tek</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://valianttek.com/wp-content/uploads/fbrfg/favicon-32x32.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AlpineJS for Dropdowns & Tabs -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+              line-height: 1.5;
+      margin: 20px;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* AlpineJS class for hidden */
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <!-- Navigation -->
+        <nav x-data="{ open: false }" class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+               <a href="index.html" class="flex items-center space-x-2">
+                    <img src="https://image2url.com/images/1755364944604-1dc7c4da-b765-470e-ba95-363dff1c6d30.jpg" alt="Valiant Tek Logo" >
+                    <span class="text-xl font-bold tracking-wider text-gray-700"></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
+                    
+                    <!-- About Dropdown -->
+                    <div x-data="{ dropdownOpen: false }" @mouseleave="dropdownOpen = false" class="relative flex items-center">
+                        <a href="about.html" class="text-gray-600 hover:text-blue-600 font-medium">About</a>
+                        <button @mouseenter="dropdownOpen = true" @focus="dropdownOpen = true" class="ml-1 focus:outline-none" aria-label="About options">
+                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="dropdownOpen" x-cloak @mouseleave="dropdownOpen = false" class="absolute left-0 top-full mt-2 py-2 w-64 bg-white rounded-md shadow-xl z-20">
+                             <a href="values.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Values & Mission</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Where integrity, innovation, and cost-effectiveness converge.</span>
+                            </a>
+                            <a href="Recognition.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Recognition</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Recognition woven into the very fabric of Valiant Tek's existence.</span>
+                            </a>
+                            <a href="Ethics.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Ethics</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">A compass that steers Valiant Tek's operations.</span>
+                            </a>
+                             <a href="Leadership.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Leadership</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Fostering a strong sense of innovation and team cohesion.</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Services Dropdown -->
+                     <div x-data="{ dropdownOpen: false }" @mouseleave="dropdownOpen = false" class="relative flex items-center">
+                        <a href="services.html" class="text-blue-600 font-medium">Services</a>
+                        <button @mouseenter="dropdownOpen = true" @focus="dropdownOpen = true" class="ml-1 focus:outline-none" aria-label="Services options">
+                            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="dropdownOpen" x-cloak @mouseleave="dropdownOpen = false" class="absolute left-0 top-full mt-2 py-2 w-64 bg-white rounded-md shadow-xl z-20">
+                            <a href="services.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Staff Augmentation</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Swift deployment of skilled, specialized professionals.</span>
+                            </a>
+                            <a href="services.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Consulting Services</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Transformative IT Services that transcend expectations.</span>
+                            </a>
+                            <a href="services.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Development</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Crafting bespoke solutions that cater to unique needs.</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="careers-overview.html" class="text-gray-600 hover:text-blue-600 font-medium">Careers</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-blue-600 font-medium">Contact us</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button @click="open = !open" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div x-show="open" x-cloak class="md:hidden mt-4">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-blue-600">About</a>
+                <a href="services.html" class="block py-2 text-gray-600 hover:text-blue-600">Services</a>
+                <a href="careers-overview.html" class="block py-2 text-gray-600 hover:text-blue-600">Careers</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-blue-600">Contact us</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="bg-blue-600 text-white py-12 md:py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold">Our Services</h1>
+                <p class="mt-2 text-lg text-blue-200">Transformative IT Consulting services that transcend expectations.</p>
+            </div>
+        </section>
+
+        <!-- Services Section with Tabs -->
+        <section class="py-16 md:py-24" x-data="{ activeTab: 'staff' }">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-3 gap-12">
+                    <!-- Left Column: Tab Buttons -->
+                    <div class="lg:col-span-1 space-y-4">
+                        <button @click="activeTab = 'staff'" :class="{ 'bg-blue-600 text-white shadow-lg scale-105': activeTab === 'staff', 'bg-gray-100 hover:bg-gray-200 hover:scale-105': activeTab !== 'staff' }" class="w-full text-left p-4 rounded-lg font-semibold transition-all duration-300">
+                            Staff Augmentation
+                        </button>
+                        <button @click="activeTab = 'development'" :class="{ 'bg-blue-600 text-white shadow-lg scale-105': activeTab === 'development', 'bg-gray-100 hover:bg-gray-200 hover:scale-105': activeTab !== 'development' }" class="w-full text-left p-4 rounded-lg font-semibold transition-all duration-300">
+                            Development
+                        </button>
+                        <button @click="activeTab = 'consulting'" :class="{ 'bg-blue-600 text-white shadow-lg scale-105': activeTab === 'consulting', 'bg-gray-100 hover:bg-gray-200 hover:scale-105': activeTab !== 'consulting' }" class="w-full text-left p-4 rounded-lg font-semibold transition-all duration-300">
+                            Consulting Services
+                        </button>
+                    </div>
+
+                    <!-- Right Column: Tab Content -->
+                    <div class="lg:col-span-2">
+                        <div x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 transform -translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0">
+                            <!-- Staff Augmentation Content -->
+                            <div x-show="activeTab === 'staff'" x-cloak>
+                                <div class="max-w-lg">
+                                    <h2 class="text-3xl font-bold mb-4">Swift deployment of skilled, specialized professionals</h2>
+                                    <img src="https://image2url.com/images/1754745591824-41583df3-8b6f-471e-b865-378481748092.jpg" alt="IT Staff Augmentation" class="rounded-lg shadow-lg w-full mb-6">
+                                    <div class="text-gray-600 space-y-4">
+                                        <p style="text-align: justify;">In today's vibrant market scenario, businesses need agility, expertise, and cost-effectiveness in their workforce strategies. At Valiant Tek, our staff augmentation services redefine workforce enhancement, combining economy, a proven track record, and swift deployment of skilled professionals.</p>
+
+<p style="text-align: justify;">Whether you seek cost-effective expertise, rapid scalability, or specific skills, our services are the catalyst for elevating your team and achieving unparalleled success in your projects.</p>
+<h5><b>Economic efficiency:</b></h5>
+<p style="text-align: justify;">Designed for economic sensibilit by leveraging our extensive talent network, at Valiant Tek, we provide access to highly skilled professionals at competitive rates. This cost-effective approach provides freedom to our clients in augmenting their teams minus the financial burden of traditional hiring processes.</p>
+<h5><b>Proven track record:</b></h5>
+<p style="text-align: justify;">With a history of delivering exceptional staffing solutions across diverse industries, at Valiant Tek, our proven track record is a testament to our commitment to client satisfaction. We align our services with your unique needs, ensuring a seamless integration of augmented staff into your short/long term projects.</p>
+<h5><b>Timely deployment of expertise:</b></h5>
+<p style="text-align: justify;">As time is of the essence, at Valiant Tek, our services prioritize rapid deployment of skilled professionals. Whether you require a single expert or an entire team, our agile approach ensures swift onboarding. This accelerates project timelines, providing you with the flexibility to scale up or down as project demands evolve.</p>
+<h5><b>Tailored solutions for diverse needs:</b></h5>
+<p style="text-align: justify;">At Valiant Tek, we opine that one size does not fit all. Therefore, our staff augmentation services offer tailored solutions to meet the specific demands of your projects. Whether you need short-term expertise for a specific task or long-term team augmentation, our services adapt to your unique requirements.</p>
+<h5><b>Access to specialized skills:</b></h5>
+<p style="text-align: justify;">Valiant Tek’s talent pool is a reservoir of specialized skills. Whether it's the latest programming languages, niche IT expertise, or industry-specific knowledge, our professionals bring a diverse range of skills to elevate your projects.</p>
+<h5><b>Seamless integration with in-house teams:</b></h5>
+<p style="text-align: justify;">Collaboration is key to success, and our augmented staff seamlessly integrates with your in-house teams. By ensuring effective communication and alignment with your organizational culture, the integration results in enhancing efficiency and promotes a unified approach toward project goals.</p>
+<h5><b>Continuous support and monitoring:</b></h5>
+<p style="text-align: justify;">Valiant Tek's commitment doesn't end with deployment. We provide continuous support and monitoring to ensure the ongoing success of augmented teams. Regular check-ins, performance evaluations, and proactive problem-solving contribute to a dynamic partnership that evolves with your business needs.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Development Content -->
+                            <div x-show="activeTab === 'development'" x-cloak>
+                                <div class="max-w-lg">
+                                    <h2 class="text-3xl font-bold mb-4">Crafting bespoke solutions that cater to unique needs</h2>
+                                    <img src="https://image2url.com/images/1755713394657-bb88ff9a-1189-46d0-a2d0-08e5ca36b784.jpeg" alt="Software Development" class="rounded-lg shadow-lg w-full mb-6">
+                                    <div class="text-gray-600 space-y-4">
+                                        <p style="text-align: justify;">At Valiant Tek, our IT development services epitomize a fusion of evidenced expertise, industry knowledge, and a relentless pursuit of innovation. We specialize in crafting bespoke solutions that cater to the unique needs of diverse industries, ensuring not just functionality but a transformative impact.</p>
+<h5><b>Proven expertise in custom development:</b></h5>
+<p style="text-align: justify;">At Valiant Tek, our hallmark lies in the proven expertise to architect and deliver innovative custom solutions. With a deep understanding of various industries, the talented team doesn't just build software; it engineers solutions that align with your business objectives. Our track record showcases successful deployments across a spectrum of industries.</p>
+<h5><b>Industry-centric knowledge:</b></h5>
+<p style="text-align: justify;">In the dynamic landscape of technology, our development services are anchored in industry-centric knowledge, allowing us to tailor solutions that resonate with the specific challenges and opportunities of your sector. From healthcare to finance, we bring a nuanced understanding to every project.</p>
+<h5><b>Cost benefits through efficiency:</b></h5>
+<p style="text-align: justify;">With efficiency at the core of our development philosophy, at Valiant Tek, we optimize processes, streamline workflows, and leverage technology to ensure cost benefits for all our clients. Our commitment to efficiency translates into not just cost savings but tangible value, where every investment yields high returns in terms of performance and outcomes.</p>
+<h5><b>High-performance solutions:</b></h5>
+<p style="text-align: justify;">With emphasis on high performance, at Valiant Tek, we integrate cutting-edge technologies, industry best practices, and a commitment to excellence to ensure that our developments not only meet but exceed expectations. Our focus is on pushing the boundaries of what technology can achieve.</p>
+<h5><b>Agility and adaptability:</b></h5>
+<p style="text-align: justify;">As the technology landscape evolves rapidly, so do we. Our agile development approach ensures adaptability to changing requirements, emerging technologies, and market dynamics. This agility empowers our clients with solutions that not only meet current needs but are future-proofed for scalability and advancements.</p>
+<h5><b>Client-centric collaboration for alignment:</b></h5>
+<p style="text-align: justify;">At Valiant Tek, with collaboration as the cornerstone of our development process, we engage in a client-centric approach, involving you at every stage. Your insights and feedback are integral to the development journey, ensuring that the final solution not only aligns with your vision but exceeds your expectations.</p>
+<h5><b>Continuous innovation:</b></h5>
+<p style="text-align: justify;">For Team Valiant Tek, innovation is always a necessity and drives our development services. From harnessing emerging technologies to pushing the boundaries of what's possible, we strive to deliver solutions that position you at the forefront of your industry.</p>
+                    </p>            </div>
+                            </div>
+                            </div>
+                            <!-- Consulting Services Content -->
+                            <div x-show="activeTab === 'consulting'" x-cloak>
+                                <div class="max-w-lg">
+                                    <h2 class="text-3xl font-bold mb-4">Transformative IT Consulting that transcend expectations</h2>
+                                    <img src="https://image2url.com/images/1754745488058-bf5fbd58-7f82-44dd-a21b-fb43f3fbea7d.jpg" alt="IT Consulting" class="rounded-lg shadow-lg w-full mb-6">
+                                    <div class="text-gray-600 space-y-4">
+                                        <p style="text-align: justify;">Embark on a journey of technological transformation with Valiant Tek's transformative IT consulting services. Whether you are sculpting a new dream offshoot, revitalizing an existing venture, or breathing life into legacy projects, Team Valiant Tek's magical touch defines, plans, and implements strategies that transcend expectations.
+<h5><b>Crafting visions into reality:</b></h5>
+<p style="text-align: justify;">At Valiant Tek, our consulting services ripple with innovation, crafting visions into reality. We unravel possibilities, design blueprints of brilliance, and guide you through the wave of emerging technologies to sculpt your digital dreams.</p>
+<h5><b>Resurrecting existing projects:</b></h5>
+<p style="text-align: justify;"> Existing projects are not mere narratives; they are legends awaiting resurrection. With our consulting prowess, we breathe new life into ongoing ventures. Our in-depth insights unravel hidden potentials, ensuring that your existing projects don't just survive but thrive in the ever-evolving technological landscape.</p>
+<h5><b>Integrating legacy systems with cutting-edge technologies:</b></h5>
+<p style="text-align: justify;"> Legacy projects carry the echoes of potential growth. Our consulting wizards, armed with modern expertise, embark on a quest to revive and rejuvenate. We seamlessly integrate legacy systems with cutting-edge technologies, transforming the old into a powerful force that stands the test of time.</p>
+<h5><b>Robust range of services:</b></h5>
+<p style="text-align: justify;">At Valiant Tek, our methodical services are brimming with prospects. From strategic visioning to meticulous planning and flawless implementation, we transcend the scenarios into realms of feasibility studies, risk assessments, and architectural marvels that pave the way for seamless execution.</p>
+<h5><b>Foreseeing challenges and crafting strategies:</b></h5>
+<p style="text-align: justify;">At Valiant Tek, our consulting prowess shields your projects with meticulous risk assessments, foreseeing challenges and crafting strategies to overcome them. The result? A journey where risks are curtailed, and success becomes an inevitable possibility.</p>
+<h5><b>Optimizing the alchemy of costs:</b></h5>
+<p style="text-align: justify;">At Valiant Tek, our efforts optimize your cost base, ensuring that every investment is a calculated success. Through meticulous planning and resource optimization, we transform financial endeavors into magical investments that yield maximum returns.</p>
+<h5><b>Unleashing Return on Investment:</b></h5>
+<p style="text-align: justify;">At Valiant Tek, your company’s Return on Investment (ROI) soars under our watchful assessment. We create architecture that breathes life into your investments. So that your projects thrive and flourish with financial success.</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+   <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+                <!-- Column 1: Brand -->
+                <div class="col-span-1 md:col-span-2">
+ <link href="https://fonts.googleapis.com/css?family=Orbitron:700" rel="stylesheet">
+  <style>
+    .futuristic {
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 1.0em;      /* Smaller size */
+      letter-spacing: 0.24em;  /* More space between letters */
+      color: #2296cf;        /* Strong blue */
+     
+      padding: 10px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="futuristic">VΛLIΛNTTEK</div>                    <p class="mt-4 text-sm text-gray-400">Choose a holistic approach to overcoming the limitations of IT resource requirements.</p>
+                    
+                    
+                   <p class="text-sm flex items-center">
+  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 10s8-4.5 8-11a8 8 0 10-16 0c0 6.5 8 11 8 11z" />
+  </svg>
+  44330 Mercure Circle, Suite 167, Sterling, VA 20166
+</p>
+
+<p class="mt-2 text-sm flex items-center">
+  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+  </svg>
+  703 278 3339
+</p>
+
+<p class="mt-2 text-sm flex items-center">
+  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+  <a href="mailto:hr@valianttek.com" class="hover:text-white">hr@valianttek.com</a>
+</p>
+
+  </div>
+                <!-- Column 2: Navigation -->
+                <div>
+                    <h4 class="font-semibold text-white tracking-wider">NAVIGATION</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-white">Services</a></li>
+                        <li><a href="careers-overview.html" class="hover:text-white">Careers</a></li>
+                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: About -->
+                 <div>
+                    <h4 class="font-semibold text-white tracking-wider">ABOUT</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="values.html" class="hover:text-white">Values & Mission</a></li>
+                        <li><a href="Leadership.html" class="hover:text-white">Leadership</a></li>
+                        <li><a href="Recognition.html" class="hover:text-white">Recognition</a></li>
+                        <li><a href="Ethics.html" class="hover:text-white">Ethics</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Services -->
+                 <div>
+                    <h4 class="font-semibold text-white tracking-wider">SERVICES</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="services.html" class="hover:text-white">Staff Augmentation</a></li>
+                        <li><a href="services.html" class="hover:text-white">Development</a></li>
+                        <li><a href="services.html" class="hover:text-white">Consulting Services</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+                <p>2025 - Copyright. All Rights Reserved. Valiant Tek.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade-in on scroll functionality
+            const fadeInElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            fadeInElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>

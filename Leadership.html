@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership | Valiant Tek</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://valianttek.com/wp-content/uploads/fbrfg/favicon-32x32.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AlpineJS for Dropdowns -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+              line-height: 1.5;
+      margin: 20px;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* AlpineJS class for hidden */
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <!-- Navigation -->
+        <nav x-data="{ open: false }" class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="https://image2url.com/images/1755364944604-1dc7c4da-b765-470e-ba95-363dff1c6d30.jpg" alt="Valiant Tek Logo" >
+                    <span class="text-xl font-bold tracking-wider text-gray-700"></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
+                    
+                    <!-- About Dropdown -->
+                    <div x-data="{ dropdownOpen: false }" @mouseleave="dropdownOpen = false" class="relative flex items-center">
+                        <a href="about.html" class="text-blue-600 font-medium">About</a>
+                        <button @mouseenter="dropdownOpen = true" @focus="dropdownOpen = true" class="ml-1 focus:outline-none" aria-label="About options">
+                            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="dropdownOpen" x-cloak @mouseleave="dropdownOpen = false" class="absolute left-0 top-full mt-2 py-2 w-64 bg-white rounded-md shadow-xl z-20">
+                             <a href="values.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Values & Mission</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Where integrity, innovation, and cost-effectiveness converge.</span>
+                            </a>
+                            <a href="recognition.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Recognition</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Recognition woven into the very fabric of Valiant Tek's existence.</span>
+                            </a>
+                            <a href="ethics.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Ethics</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">A compass that steers Valiant Tek's operations.</span>
+                            </a>
+                             <a href="leadership.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Leadership</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Fostering a strong sense of innovation and team cohesion.</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Services Dropdown -->
+                     <div x-data="{ dropdownOpen: false }" @mouseleave="dropdownOpen = false" class="relative flex items-center">
+                        <a href="services.html" class="text-gray-600 hover:text-blue-600 font-medium">Services</a>
+                        <button @mouseenter="dropdownOpen = true" @focus="dropdownOpen = true" class="ml-1 focus:outline-none" aria-label="Services options">
+                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="dropdownOpen" x-cloak @mouseleave="dropdownOpen = false" class="absolute left-0 top-full mt-2 py-2 w-64 bg-white rounded-md shadow-xl z-20">
+                            <a href="services.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Staff Augmentation</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Swift deployment of skilled, specialized professionals.</span>
+                            </a>
+                            <a href="services.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Consulting Services</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Transformative IT Services that transcend expectations.</span>
+                            </a>
+                            <a href="services.html" class="block px-4 py-3 text-gray-700 hover:bg-blue-500 hover:text-white transition-colors group">
+                                <span class="font-semibold block text-sm">Development</span>
+                                <span class="text-xs text-gray-500 group-hover:text-white">Crafting bespoke solutions that cater to unique needs.</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="careers-overview.html" class="text-gray-600 hover:text-blue-600 font-medium">Careers</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-blue-600 font-medium">Contact us</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button @click="open = !open" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div x-show="open" x-cloak class="md:hidden mt-4">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-blue-600">About</a>
+                <a href="services.html" class="block py-2 text-gray-600 hover:text-blue-600">Services</a>
+                <a href="careers-overview.html" class="block py-2 text-gray-600 hover:text-blue-600">Careers</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-blue-600">Contact us</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="bg-blue-600 text-white py-12 md:py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold">Leadership</h1>
+                <p class="mt-2 text-lg text-blue-200">Fostering a strong sense of innovation and team cohesion</p>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="py-16 md:py-24">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="fade-in space-y-12 text-gray-600">
+                    <p class="text-lg leading-relaxed">
+                    <p style="text-align: justify;"> At Valiant Tek, our visionary leadership is the driving force behind unparalleled client satisfaction, unwavering quality commitment, and a culture of continuous innovation. Our leadership team, comprised of seasoned industry experts, is dedicated to steering the company toward new heights of excellence. They instill a commitment to stringent quality standards, ensuring the delivery of top-notch, reliable, and scalable solutions.
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                      <p style="text-align: justify;"> Simultaneously, the leadership is a commitment to inspiring excellence, fostering collaboration, and navigating the ever-evolving IT landscape. Our leadership team is characterized by a hands-on approach to leading from the front, and a deep dedication to the growth and success of both our clients and the company as a whole.
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <img src="https://image2url.com/images/1755712253584-3c4fb96a-08d2-4f5e-a3b9-3f1c29592bac.jpeg" alt="Leadership Diagram" class="rounded-lg shadow-md mx-auto">
+                        <div class="space-y-6">
+                            <div class="p-6 rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Economic efficiency:</h3>
+                                <p style="text-align: justify;">Designed for economic sensibility by leveraging our extensive talent network, at Valiant Tek, we provide access to highly skilled professionals at competitive rates. This cost-effective approach provides freedom to our clients in augmenting their teams minus the financial burden of traditional hiring processes.</p>
+                            </div>
+                             <div class="p-6 rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Proven track record:</h3>
+                               <p style="text-align: justify;">With a history of delivering exceptional staffing solutions across diverse industries, at Valiant Tek, our proven track record is a testament to our commitment to client satisfaction. We align our services with your unique needs, ensuring a seamless integration of augmented staff into your short/long term projects.</p>
+                            </div>
+
+                             <div class="p-6 rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Continuous support and monitoring:</h3>
+                               <p style="text-align: justify;">Valiant Tek's commitment doesn't end with deployment. We provide continuous support and monitoring to ensure the ongoing success of augmented teams. Regular check-ins, performance evaluations, and proactive problem-solving contribute to a dynamic partnership that evolves with your business needs.</p> </div>
+
+
+
+
+                            
+                        </div>
+                    </div>
+
+                     <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6 order-2 md:order-1">
+                             <div class="p-6 rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Timely deployment of expertise:</h3>
+                                <p style="text-align: justify;">As time is of the essence, at Valiant Tek, our services prioritize rapid deployment of skilled professionals. Whether you require a single expert or an entire team, our agile approach ensures swift onboarding. This accelerates project timelines, providing you with the flexibility to scale up or down as project demands evolve.</p>
+                            </div>
+                             <div class="p-6 rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Tailored solutions for diverse needs:</h3>
+                                <p style="text-align: justify;">At Valiant Tek, we opine that one size does not fit all. Therefore, our staff augmentation services offer tailored solutions to meet the specific demands of your projects. Whether you need short-term expertise for a specific task or long-term team augmentation, our services adapt to your unique requirements.</p>
+                            </div>
+                             <div class="p-6 rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Seamless integration with in-house teams:</h3>
+                                <p style="text-align: justify;">Collaboration is key to success, and our augmented staff seamlessly integrates with your in-house teams. By ensuring effective communication and alignment with your organizational culture, the integration results in enhancing efficiency and promotes a unified approach toward project goals.</div>
+
+
+
+
+
+
+                        </div>
+                        <img src="https://image2url.com/images/1755615597398-515c4bd5-dcfa-419d-82d4-fbfb8587ab44.png" alt="Leadership Concept Graphic" class="rounded-lg shadow-md mx-auto order-1 md:order-2">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+     <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+                <!-- Column 1: Brand -->
+                <div class="col-span-1 md:col-span-2">
+ <link href="https://fonts.googleapis.com/css?family=Orbitron:700" rel="stylesheet">
+  <style>
+    .futuristic {
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 1.0em;      /* Smaller size */
+      letter-spacing: 0.24em;  /* More space between letters */
+      color: #2296cf;        /* Strong blue */
+     
+      padding: 10px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="futuristic">VΛLIΛNTTEK</div>                    <p class="mt-4 text-sm text-gray-400">Choose a holistic approach to overcoming the limitations of IT resource requirements.</p>
+                    
+                    
+                   <p class="text-sm flex items-center">
+  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 10s8-4.5 8-11a8 8 0 10-16 0c0 6.5 8 11 8 11z" />
+  </svg>
+  44330 Mercure Circle, Suite 167, Sterling, VA 20166
+</p>
+
+<p class="mt-2 text-sm flex items-center">
+  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+  </svg>
+  703 278 3339
+</p>
+
+<p class="mt-2 text-sm flex items-center">
+  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+  <a href="mailto:hr@valianttek.com" class="hover:text-white">hr@valianttek.com</a>
+</p>
+
+  </div>
+                <!-- Column 2: Navigation -->
+                <div>
+                    <h4 class="font-semibold text-white tracking-wider">NAVIGATION</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-white">Services</a></li>
+                        <li><a href="careers-overview.html" class="hover:text-white">Careers</a></li>
+                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: About -->
+                 <div>
+                    <h4 class="font-semibold text-white tracking-wider">ABOUT</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="values.html" class="hover:text-white">Values & Mission</a></li>
+                        <li><a href="Leadership.html" class="hover:text-white">Leadership</a></li>
+                        <li><a href="Recognition.html" class="hover:text-white">Recognition</a></li>
+                        <li><a href="Ethics.html" class="hover:text-white">Ethics</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Services -->
+                 <div>
+                    <h4 class="font-semibold text-white tracking-wider">SERVICES</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="services.html" class="hover:text-white">Staff Augmentation</a></li>
+                        <li><a href="services.html" class="hover:text-white">Development</a></li>
+                        <li><a href="services.html" class="hover:text-white">Consulting Services</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+                <p>2025 - Copyright. All Rights Reserved. Valiant Tek.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade-in on scroll functionality
+            const fadeInElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            fadeInElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
